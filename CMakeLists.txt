@@ -179,6 +179,7 @@ add_subdirectory( plugins )
 add_subdirectory( programs )
 add_subdirectory( scripts )
 add_subdirectory( unittests )
+add_subdirectory( contracts )
 add_subdirectory( tests )
 add_subdirectory( tools )
 
@@ -197,6 +198,11 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/testnet.template ${CMAKE_CURRENT_BINA
 
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/eosio.version.in ${CMAKE_CURRENT_BINARY_DIR}/eosio.version.hpp)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/eosio.version.hpp DESTINATION ${CMAKE_INSTALL_FULL_INCLUDEDIR})
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/contracts/contracts/eosio.bios/eosio.bios.abi DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/eosio/contracts)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/contracts/contracts/eosio.bios/eosio.bios.wasm DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/eosio/contracts)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/contracts/contracts/eosio.boot/eosio.boot.abi DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/eosio/contracts)
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/contracts/contracts/eosio.boot/eosio.boot.wasm DESTINATION ${CMAKE_INSTALL_FULL_SYSCONFDIR}/eosio/contracts)
 
 set(EOS_ROOT_DIR ${CMAKE_BINARY_DIR})
 configure_file(${CMAKE_SOURCE_DIR}/CMakeModules/eosio-config.cmake.in ${CMAKE_BINARY_DIR}/lib/cmake/eosio/eosio-config.cmake @ONLY)
